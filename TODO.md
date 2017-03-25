@@ -1,11 +1,11 @@
-# List of things to-do
+# List Of Things To Do
 
-* get ui
+* Build An Excellent User Interface
 
-    * css framework - nice one
+    * CSS Framework - Clear and Focused
 
-* bigparser (wtf is it)
+* Big Parser
 
-    * collect reliable resources
+    * Collect Reliable Resources
 
-    * ai -  
+    * Artificial Intelligence
