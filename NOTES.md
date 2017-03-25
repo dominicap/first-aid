@@ -26,9 +26,9 @@ Discord Chat Room: https://discord.gg/A6YgSay
 
 #### Reliable Sources
 
-* [Khan Academy](https://khanacademy.com)
+* [Khan Academy](https://khanacademy.org)
 
-* [Wikipedia](https://wikipedia.com)
+* [Wikipedia](https://wikipedia.org)
 
 #### Team
 
