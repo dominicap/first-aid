@@ -15,7 +15,7 @@
 
     * Generate data
 
-        * URL generation - DONE
+        * URL generation
 
             * python script: takes a domain and outputs all urls under it
 
