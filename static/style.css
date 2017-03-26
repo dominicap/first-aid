@@ -10,12 +10,12 @@ body,
 
 body {
     font-family: "Roboto", sans-serif;
-    background-color: #186dee;
+    background-color: #116fcc;
     color: white;
 }
 
 .main {
-    width: 70%;
+    width: 90%;
 }
 
 .row {
@@ -70,6 +70,15 @@ body {
     color: black;
 }
 
+a {
+    color: white;
+}
+
+a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
 
 /* #####
     SPACING
@@ -89,7 +98,17 @@ body {
 }
 
 #results-card {
-    width: 70%;
+    width: 100%;
     height: auto;
     margin-bottom: 50px;
+}
+
+@media (min-width: 868px) {
+    .main {
+        width: 80%;
+    }
+
+    #results-card {
+        width: 70%;
+    }
 }

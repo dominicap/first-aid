@@ -4,6 +4,8 @@
 
     * CSS Framework - Clear and Focused
 
+    * switch color to something lighter when they get results
+
 
 * Big Parser
 
