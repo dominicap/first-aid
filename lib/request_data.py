@@ -74,15 +74,9 @@ def get_relevant_result(result_dictionary, query):
     for value in tokenized_values:
         scores.append(value.similarity(query))
 
-    print(scores)
-
     keys = list(keys)
-
     return keys[scores.index(max(scores))]
 
 def string_to_tokens(string):
     tokens = nlp.tokenizer(string.translate(translator).strip().lower())
     return tokens
-
-if __name__ == "__main__":
-    print(get_relevant_result(results_to_dict(search_grid(key_words_from_query("what is alpha particle"))), string_to_tokens("what is alpha particle")))
