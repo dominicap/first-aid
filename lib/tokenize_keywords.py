@@ -11,20 +11,32 @@ stemmer = PorterStemmer()
 translator = str.maketrans('', '', punctuation)
 
 with open('../data/video_links.txt', 'r') as file:
-    links = file.readlines()
+    links = [line.rstrip() for line in file.readlines()]
 
+empty_urls = []
 descriptions = []
 for link in links:
     video_id = link.replace('http://youtube.com/watch?v=', '').strip()
     url = 'https://www.khanacademy.org/api/v1/user/videos/' + video_id
+
     try:
         results = json.loads(urllib.request.urlopen(url).read().decode('utf-8'))
         descriptions.append(results['video']['description'])
     except urllib.error.HTTPError as exception:
         if exception.code == 404:
             print("JSON not available for " + url)
+            empty_urls.append(url.replace('https://www.khanacademy.org/api/v1/user/videos/', 'http://youtube.com/watch?v='))
     except KeyError:
         print("Key does not exist for video " + url)
+
+relevant_links = []
+for link in links:
+    if link not in empty_urls:
+        relevant_links.append(link)
+
+with open('../data/relevant_video_links.txt', 'a+') as file:
+    for relevant_link in relevant_links:
+        file.write(relevant_link + '\n')
 
 for description in descriptions:
     tokens = nlp.tokenizer(description.translate(translator).strip().lower())
