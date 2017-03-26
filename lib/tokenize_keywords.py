@@ -2,8 +2,8 @@ import json
 import spacy
 import urllib.request
 
-from string import punctuation
 from nltk.stem.porter import *
+from string import punctuation
 
 nlp = spacy.load('en')
 
@@ -22,12 +22,16 @@ for link in links:
         descriptions.append(results['video']['description'])
     except urllib.error.HTTPError as exception:
         if exception.code == 404:
-            print("JSON not avaiable for " + url)
+            print("JSON not available for " + url)
     except KeyError:
         print("Key does not exist for video " + url)
 
 for description in descriptions:
     tokens = nlp.tokenizer(description.translate(translator).strip().lower())
 
-    with open('../data/link_keywords.txt', 'w+') as file:
-        file.write([stemmer.stem(str(token)) for token in tokens if not token.is_stop])
+    with open('../data/link_keywords.txt', 'a+') as file:
+        delimited_string = ""
+        for keyword in [stemmer.stem(str(token)) for token in tokens if not token.is_stop]:
+            delimited_string = delimited_string + "|" + keyword
+        delimited_string = delimited_string[1:]
+        file.write(delimited_string + '\n')
