@@ -3,7 +3,10 @@
 
 <div id="block1">
     <h1> welcome to firstaid</h1>
-    <input type="text" placeholder="whassup" />
+    <form method="post" id="searchbar" action="{{ url_for("results") }}">
+        <input type="text" placeholder="whassup" />
+        <input type="submit" value="submit" class="btn pmd-ripple-effect btn-primary" />
+    </form>
 </div>
 
 {% endblock %}
