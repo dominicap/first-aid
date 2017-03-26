@@ -17,17 +17,21 @@ def results():
 
     results_dict = req_data.results_to_dict(req_data.search_grid(key_words))
 
-    relevant_result = req_data.get_relevant_result(results_dict, key_words_tokens)
+    try:
+        relevant_result = req_data.get_relevant_result(results_dict, key_words_tokens)
 
-    if __get_key(relevant_result, 'description') is not None:
-        description = __get_key(relevant_result, 'description')
-    else:
-        description = ""
+        if __get_key(relevant_result, 'description') is not None:
+            description = __get_key(relevant_result, 'description')
+        else:
+            description = ""
 
-    if __get_key(relevant_result, 'title') is not None:
-        title = __get_key(relevant_result, 'title')
-    else:
-        title = query
+        if __get_key(relevant_result, 'title') is not None:
+            title = __get_key(relevant_result, 'title')
+        else:
+            title = query
+
+    except ValueError:
+        return "Request does not exist."
 
     if request.method == "POST":
         return render_template("results.html.j2", title=title, relevant_result=relevant_result, description=description)
