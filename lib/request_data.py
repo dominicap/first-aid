@@ -11,7 +11,7 @@ stemmer = PorterStemmer()
 translator = str.maketrans('', '', punctuation)
 
 def key_words_from_query(query):
-    tokens = nlp.tokenizer(query.translate(translator).strip().lower())
+    tokens = string_to_tokens(query)
     return [stemmer.stem(str(token)) for token in tokens if not token.is_stop]
 
 big_parser_file = open("../.keys/BIGPARSER_KEYS", "r")
@@ -57,7 +57,7 @@ def results_to_dict(results):
 
     return result_dictionary
 
-def get_relevant_result(result_dictionary):
+def get_relevant_result(result_dictionary, query):
     keys = result_dictionary.keys()
     values = result_dictionary.values()
 
@@ -65,6 +65,24 @@ def get_relevant_result(result_dictionary):
     for value in values:
         cleansed_values.append(value.split('|'))
 
-    return cleansed_values
+    tokenized_values = []
+    for value in cleansed_values:
+        token_string = ' '.join(value)
+        tokenized_values.append(string_to_tokens(token_string))
 
-print(get_relevant_result(results_to_dict(search_grid(key_words_from_query('integrals')))))
+    scores = []
+    for value in tokenized_values:
+        scores.append(value.similarity(query))
+
+    print(scores)
+
+    keys = list(keys)
+
+    return keys[scores.index(max(scores))]
+
+def string_to_tokens(string):
+    tokens = nlp.tokenizer(string.translate(translator).strip().lower())
+    return tokens
+
+
+print(get_relevant_result(results_to_dict(search_grid(key_words_from_query("what is alpha particle"))), string_to_tokens("what is alpha particle")))
