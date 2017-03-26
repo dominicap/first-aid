@@ -10,7 +10,7 @@ nlp = spacy.load('en')
 stemmer = PorterStemmer()
 translator = str.maketrans('', '', punctuation)
 
-with open('../data/video_links.txt', 'r') as file:
+with open('../data/txt/video_links.txt', 'r') as file:
     links = [line.rstrip() for line in file.readlines()]
 
 empty_urls = []
@@ -34,14 +34,14 @@ for link in links:
     if link not in empty_urls:
         relevant_links.append(link)
 
-with open('../data/relevant_video_links.txt', 'a+') as file:
+with open('../data/txt/relevant_video_links.txt', 'a+') as file:
     for relevant_link in relevant_links:
         file.write(relevant_link + '\n')
 
 for description in descriptions:
     tokens = nlp.tokenizer(description.translate(translator).strip().lower())
 
-    with open('../data/link_keywords.txt', 'a+') as file:
+    with open('../data/txt/link_keywords.txt', 'a+') as file:
         delimited_string = ""
         for keyword in [stemmer.stem(str(token)) for token in tokens if not token.is_stop]:
             delimited_string = delimited_string + "|" + keyword
