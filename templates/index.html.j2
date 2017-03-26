@@ -1,12 +1,12 @@
-{% extends "layout.html" %}
+{% extends "layout.html.j2" %}
 {% block body %}
 
 <div id="block1" class="container">
-    <div class="main vert-center center-block">
+    <div class="main center-block">
 
         <div class="mini-container">
 
-            <div class="row" id="welcome">
+            <div class="row text-center" id="welcome">
 
                 <div class="col-md-12">
                     <h1 class="center-block">welcome to firstaid</h1>
@@ -14,14 +14,14 @@
 
             </div>
 
-            <div class="row" id="searchbar">
+            <div class="row text-center" id="searchbar">
 
                 <div class="col-md-12">
 
                     <form method="post" id="inputform" action="{{ url_for("results") }}" />
 
                         <div class="pmd-textfield form-group">
-                            <input type="text" value="whassup"  class="form-control" id="input"/>
+                            <input type="text" value="whassup"  class="form-control" id="input" name="input" />
                             <!-- <input type="submit" value="submit" class="btn pmd-btn-raised pmd-ripple-effect btn-primary"/>-->
                         </div>
 
@@ -30,6 +30,10 @@
                 </div>
 
             </div>
+
+            {% block results %}
+
+            {% endblock %}
 
         </div>
 

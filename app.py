@@ -3,12 +3,12 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    return render_template("hello.html")
+    return render_template("index.html.j2")
 
 @app.route("/results", methods = ["GET", "POST"])
 def results():
     if request.method == "POST":
-        return "Submit accomplished!"
+        return render_template("results.html.j2", request=request)
     else:
         return "whut.."
 

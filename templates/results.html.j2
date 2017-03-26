@@ -1,0 +1,35 @@
+{% extends "index.html.j2" %}
+{% block results %}
+
+<div class="row center-block" id="results">
+
+    <div class="col-md-12">
+        <!-- Default card starts -->
+        <div class="pmd-card pmd-card-default pmd-z-depth center-block" id="results-card">
+
+            <!-- Card body -->
+            <div class="pmd-card-title">
+                <h2 class="pmd-card-title-text">{{ request.form["input"] }}</h2>
+            </div>
+
+            <div class="pmd-card-body bottom-border">
+                Cards provide context and an entry point to more robust information and views. Don't overload cards with extraneous information or actions.
+            </div>
+
+            <div class="pmd-card-body">
+                This is a text paragraph.
+            </div>
+
+            <!-- Card actions
+            <div class="pmd-card-actions">
+                <button class="btn pmd-btn-flat pmd-ripple-effect btn-primary" type="button">Primary</button>
+                <button type="button" class="btn pmd-btn-flat pmd-ripple-effect btn-default">Action</button>
+            </div> -->
+
+        </div>
+        <!--Default card ends -->
+    </div>
+
+</div>
+
+{% endblock %}
