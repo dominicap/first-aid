@@ -57,7 +57,7 @@ def results_to_dict(results):
                 result_dictionary[result["data"][0]] = result["data"][1]
 
         return result_dictionary
-    except: KeyError:
+    except KeyError:
         return None
 
 def get_relevant_result(result_dictionary, query):
