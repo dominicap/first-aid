@@ -117,6 +117,31 @@ a:hover {
     margin-bottom: 50px;
 }
 
+#about {
+    position: relative;
+    width: 100%;
+    text-align: center;
+}
+
+#about .col-md-4 {
+    position: relative;
+    top: 500px;
+    float: right;
+}
+
+#about a {
+    float: right;
+}
+
+#aboutpage {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.no-padding {
+    padding: 0;
+}
+
 @media (min-width: 868px) {
     .main {
         width: 80%;

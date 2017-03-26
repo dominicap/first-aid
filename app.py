@@ -38,6 +38,10 @@ def results():
     else:
         return "Request not received."
 
+@app.route("/about")
+def about():
+    return render_template("about.html.j2")
+
 def __get_key(youtube_url, key):
     video_id = youtube_url.replace("https://www.youtube.com/embed/", '').strip()
     url = 'https://www.khanacademy.org/api/v1/user/videos/' + video_id
