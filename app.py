@@ -1,5 +1,7 @@
 from flask import Flask, url_for, request, render_template
 from lib import request_data as req_data
+import urllib
+import json
 
 app = Flask(__name__)
 
@@ -17,19 +19,23 @@ def results():
 
     relevant_result = req_data.get_relevant_result(results_dict, key_words_tokens)
 
-    if __get_key(relevant_result, 'description') not None:
+    if __get_key(relevant_result, 'description') is not None:
         description = __get_key(relevant_result, 'description')
+    else:
+        description = ""
 
-    if __get_key(relevant_result, 'title') not None:
+    if __get_key(relevant_result, 'title') is not None:
         title = __get_key(relevant_result, 'title')
+    else:
+        title = query
 
     if request.method == "POST":
-        return render_template("results.html.j2", query=query, relevant_result=relevant_result)
+        return render_template("results.html.j2", title=title, relevant_result=relevant_result, description=description)
     else:
         return "Request not received."
 
 def __get_key(youtube_url, key):
-    video_id = youtube_url.replace("http://www.youtube.com/watch?v=", '').strip()
+    video_id = youtube_url.replace("https://www.youtube.com/embed/", '').strip()
     url = 'https://www.khanacademy.org/api/v1/user/videos/' + video_id
 
     result = None

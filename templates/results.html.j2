@@ -9,15 +9,17 @@
 
             <!-- Card body -->
             <div class="pmd-card-title">
-                <h2 class="pmd-card-title-text">{{ query }}</h2>
+                <h2 class="pmd-card-title-text">{{ title.title() }}</h2>
+                <span class="pmd-card-subtitle-text">Khan Academy</span>
             </div>
 
-            <div class="pmd-card-body bottom-border">
-                {{ relevant_result }}
+            <div class="pmd-card-media media">
+                <object id="video" data="{{ relevant_result }}">
+                </object>
             </div>
 
             <div class="pmd-card-body">
-                This is a text paragraph.
+                {{ description.capitalize() }}
             </div>
 
             <!-- Card actions
