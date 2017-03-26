@@ -29,7 +29,7 @@ def results():
         return "Request not received."
 
 def __get_key(youtube_url, key):
-    video_id = youtube_url.replace("http://youtube.com/watch?v=", '').strip()
+    video_id = youtube_url.replace("http://www.youtube.com/watch?v=", '').strip()
     url = 'https://www.khanacademy.org/api/v1/user/videos/' + video_id
 
     result = None

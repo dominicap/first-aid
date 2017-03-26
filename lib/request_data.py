@@ -51,31 +51,37 @@ def search_grid(key_words):
 def results_to_dict(results):
     result_dictionary = {}
 
-    for result in results["rows"]:
-        for data in result:
-            result_dictionary[result["data"][0]] = result["data"][1]
+    try:
+        for result in results["rows"]:
+            for data in result:
+                result_dictionary[result["data"][0]] = result["data"][1]
 
-    return result_dictionary
+        return result_dictionary
+    except: KeyError:
+        return None
 
 def get_relevant_result(result_dictionary, query):
-    keys = result_dictionary.keys()
-    values = result_dictionary.values()
+    if (result_dictionary is not None):
+        keys = result_dictionary.keys()
+        values = result_dictionary.values()
 
-    cleansed_values = []
-    for value in values:
-        cleansed_values.append(value.split('|'))
+        cleansed_values = []
+        for value in values:
+            cleansed_values.append(value.split('|'))
 
-    tokenized_values = []
-    for value in cleansed_values:
-        token_string = ' '.join(value)
-        tokenized_values.append(string_to_tokens(token_string))
+        tokenized_values = []
+        for value in cleansed_values:
+            token_string = ' '.join(value)
+            tokenized_values.append(string_to_tokens(token_string))
 
-    scores = []
-    for value in tokenized_values:
-        scores.append(value.similarity(query))
+        scores = []
+        for value in tokenized_values:
+            scores.append(value.similarity(query))
 
-    keys = list(keys)
-    return keys[scores.index(max(scores))].replace('http://youtube.com/watch?v=', 'https://www.youtube.com/embed/')
+        keys = list(keys)
+        return keys[scores.index(max(scores))].replace('http://youtube.com/watch?v=', 'https://www.youtube.com/embed/')
+    else:
+        raise(ValueError("Query " + query + " resulted in no results"))
 
 def string_to_tokens(string):
     tokens = nlp.tokenizer(string.translate(translator).strip().lower())
