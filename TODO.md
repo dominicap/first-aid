@@ -3,7 +3,7 @@
 * Build An Excellent User Interface
 
     * CSS Framework - Clear and Focused
-    
+
 
 * Big Parser
 
@@ -13,7 +13,7 @@
 
     * Generate data
 
-        * URL generation
+        * URL generation - DONE
 
             * python script: takes a domain and outputs all urls under it
 
