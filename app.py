@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    sayings = ['What is on your mind?', 'What is your question?', 'Have any doubts?', "What is your problem today?", "What is frustrating you today?s"]
+    sayings = ['What is on your mind?', 'What is your question?', 'Have any doubts?', "What is your problem today?", "What is frustrating you today?"]
     return render_template("index.html.j2", saying=random.choice(sayings))
 
 @app.route("/results", methods = ["GET", "POST"])
