@@ -57,7 +57,7 @@ def results_to_dict(results):
                 result_dictionary[result["data"][0]] = result["data"][1]
 
         return result_dictionary
-    except: KeyError:
+    except KeyError:
         return None
 
 def get_relevant_result(result_dictionary, query):
@@ -81,7 +81,7 @@ def get_relevant_result(result_dictionary, query):
         keys = list(keys)
         return keys[scores.index(max(scores))].replace('http://youtube.com/watch?v=', 'https://www.youtube.com/embed/')
     else:
-        raise(ValueError("Query " + query + " resulted in no results"))
+        raise(ValueError("Query " + str(query) + " resulted in no results"))
 
 def string_to_tokens(string):
     tokens = nlp.tokenizer(string.translate(translator).strip().lower())
