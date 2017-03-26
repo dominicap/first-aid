@@ -14,7 +14,7 @@ def key_words_from_query(query):
     tokens = string_to_tokens(query)
     return [stemmer.stem(str(token)) for token in tokens if not token.is_stop]
 
-big_parser_file = open("../.keys/BIGPARSER_KEYS", "r")
+big_parser_file = open(".keys/BIGPARSER_KEYS", "r")
 
 BIGPARSER_CREDENTIALS = list(big_parser_file.read().splitlines())
 GRID_ID = "58d77d20478af70572b61145"
@@ -84,5 +84,5 @@ def string_to_tokens(string):
     tokens = nlp.tokenizer(string.translate(translator).strip().lower())
     return tokens
 
-
-print(get_relevant_result(results_to_dict(search_grid(key_words_from_query("what is alpha particle"))), string_to_tokens("what is alpha particle")))
+if __name__ == "__main__":
+    print(get_relevant_result(results_to_dict(search_grid(key_words_from_query("what is alpha particle"))), string_to_tokens("what is alpha particle")))

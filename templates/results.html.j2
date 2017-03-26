@@ -9,11 +9,11 @@
 
             <!-- Card body -->
             <div class="pmd-card-title">
-                <h2 class="pmd-card-title-text">{{ request.form["input"] }}</h2>
+                <h2 class="pmd-card-title-text">{{ query }}</h2>
             </div>
 
             <div class="pmd-card-body bottom-border">
-                Cards provide context and an entry point to more robust information and views. Don't overload cards with extraneous information or actions.
+                {{ relevant_result }}
             </div>
 
             <div class="pmd-card-body">
