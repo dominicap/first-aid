@@ -46,7 +46,18 @@ def search_grid(key_words):
     search_headers = {'authId': authID, 'Content-type': 'application/json'}
     search_results = requests.post(URL + 'query/table', data=search_data_json, headers=search_headers).json()
 
+    print(search_results["rows"])
+
+    print(results_to_dict(search_results))
+
+def results_to_dict(results):
     result_dictionary = {}
-    print(search_results[1])
+
+    for result in results["rows"]:
+        for data in result:
+            result_dictionary[result["data"][0]] = result["data"][1]
+
+    return result_dictionary
+
 
 search_grid(key_words_from_query('integral'))
