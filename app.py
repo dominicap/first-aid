@@ -1,13 +1,16 @@
+import json
+import random
+import urllib
+
 from flask import Flask, url_for, request, render_template
 from lib import request_data as req_data
-import urllib
-import json
 
 app = Flask(__name__)
 
 @app.route("/")
 def index():
-    return render_template("index.html.j2")
+    sayings = ['What is on your mind?', 'What is your question?', 'Have any doubts?', "What is your problem today?", "What is frustrating you today?s"]
+    return render_template("index.html.j2", saying=random.choice(sayings))
 
 @app.route("/results", methods = ["GET", "POST"])
 def results():
