@@ -89,3 +89,5 @@ ENV/
 
 # API Keys
 .keys/
+
+.DS_Store

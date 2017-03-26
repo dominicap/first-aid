@@ -27,7 +27,7 @@ while (result_level <= math.ceil(float(TOTAL_RESULTS) / 50.0)):
         TOTAL_RESULTS = int(results['pageInfo']['totalResults'])
 
     for result in results['items']:
-        with open('../data/video_ids.txt', 'a+') as file:
+        with open('../data/video_links.txt', 'a+') as file:
             try:
                 file.write("http://youtube.com/watch?v=" + result['id']['videoId'] + '\n')
             except KeyError:
