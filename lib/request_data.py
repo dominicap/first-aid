@@ -13,4 +13,4 @@ def key_words_from_query(query):
     return [stemmer.stem(str(token)) for token in tokens if not token.is_stop]
 
 def search_grid(key_words):
-    # Get results
+    return None
