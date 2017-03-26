@@ -60,5 +60,3 @@ def __get_key(youtube_url, key):
         print("Key does not exist for video " + url)
 
     return result
-
-app.run(debug=True)
