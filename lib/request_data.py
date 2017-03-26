@@ -46,9 +46,7 @@ def search_grid(key_words):
     search_headers = {'authId': authID, 'Content-type': 'application/json'}
     search_results = requests.post(URL + 'query/table', data=search_data_json, headers=search_headers).json()
 
-    print(search_results["rows"])
-
-    print(results_to_dict(search_results))
+    return search_results
 
 def results_to_dict(results):
     result_dictionary = {}
@@ -59,5 +57,14 @@ def results_to_dict(results):
 
     return result_dictionary
 
+def get_relevant_result(result_dictionary):
+    keys = result_dictionary.keys()
+    values = result_dictionary.values()
 
-search_grid(key_words_from_query('integral'))
+    cleansed_values = []
+    for value in values:
+        cleansed_values.append(value.split('|'))
+
+    return cleansed_values
+
+print(get_relevant_result(results_to_dict(search_grid(key_words_from_query('integrals')))))
