@@ -11,3 +11,5 @@ def results():
         return "Submit accomplished!"
     else:
         return "whut.."
+
+app.run(debug=True)

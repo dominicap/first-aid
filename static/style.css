@@ -1,4 +1,76 @@
+/* #####
+    MAIN
+##### */
+
+html,
+body,
+.container {
+    height: 100%;
+}
+
 body {
     font-family: "Roboto", sans-serif;
-    background-color: #fff;
+    background-color: #186dee;
+    color: white;
+}
+
+.main {
+    width: 70%;
+}
+
+.row {
+    /* border: 1px solid red; */
+}
+
+.mini-container {
+    width: 100%;
+    margin-bottom: 100px;
+}
+
+.center-block {
+    float: none;
+    text-align: center;
+}
+
+.vert-center {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    align-items: center;
+
+    height: 100%;
+
+    /* border: 3px solid black; */
+}
+
+
+/* #####
+    COLORS
+##### */
+
+.pmd-textfield .form-control {
+    border-bottom: 1px solid white;
+    color: white;
+    font-size: 1em;
+}
+
+.pmd-textfield-focused {
+    background-color: white;
+}
+
+
+/* #####
+    SPACING
+##### */
+
+#welcome {
+    margin-bottom: 50px;
+}
+
+#welcome h1 {
+    font-size: 2.5em;
 }
