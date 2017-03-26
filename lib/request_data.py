@@ -31,6 +31,7 @@ login_headers = {'Content-type': 'application/json'}
 authID = requests.post(URL + 'common/login', data=login_data_json, headers=login_headers).json()['authId']
 
 def search_grid(key_words):
+
     search_data = {
       "gridId": GRID_ID,
       "viewId": None,
