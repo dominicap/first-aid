@@ -75,7 +75,7 @@ def get_relevant_result(result_dictionary, query):
         scores.append(value.similarity(query))
 
     keys = list(keys)
-    return keys[scores.index(max(scores))]
+    return keys[scores.index(max(scores))].replace('http://youtube.com/watch?v=', 'https://www.youtube.com/embed/')
 
 def string_to_tokens(string):
     tokens = nlp.tokenizer(string.translate(translator).strip().lower())
